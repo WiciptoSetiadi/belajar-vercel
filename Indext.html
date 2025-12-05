@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Vercel Demo</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; }
+        button { padding: 10px 20px; cursor: pointer; }
+        #hasil { margin-top: 20px; font-weight: bold; color: #0070f3; }
+    </style>
+</head>
+<body>
+    <h1>Coba Klik Tombol di Bawah</h1>
+    <p>Halaman ini statis, tapi tombol ini akan memanggil Backend API.</p>
+
+    <button onclick="panggilApi()">Sapa Saya!</button>
+    <div id="hasil"></div>
+
+    <script>
+        async function panggilApi() {
+            // Memanggil file yang ada di folder /api/hello.js
+            const response = await fetch('/api/hello?name=PenggunaVercel');
+            const data = await response.json();
+
+            document.getElementById('hasil').innerText = data.pesan + "\n" + data.waktu;
+        }
+    </script>
+</body>
+</html>
